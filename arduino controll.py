@@ -21,7 +21,7 @@ def serial_send_fn(req):
 data_dict = {} # 받은 데이터를 저장할 딕셔너리
 
 def serial_receive_fn(catgry, rcv_data, data_dict): # 카테고리, 받은 데이터, 딕셔너리를 인풋으로 
-	while(sts = 'reading'):
+	while (sts = 'reading'):
 		data_dict[catgry] = rcv_data # 카테고리 key에 받은 데이터를 value로 넣음
 		return data_dict 
 
