@@ -3,7 +3,7 @@ import psutil
 from discord.ext import commands
 from datetime import datetime
 
-token = 'ODAyODM2MDAzMzEyMjM4NjEy.G2U2J0.UJl1YRu58lNpWTS1zDQsa9fJpY11_ZiGZ_7uVU'
+token = 'Your_token'
 
 intents = discord.Intents.default()
 intents.message_content = True
