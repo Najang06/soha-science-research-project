@@ -49,7 +49,7 @@ void setup()
 	pinMode(6, INPUT); // fine dust sensor
 	starttime = millis();
 	bme.begin();
-  dht.begin();
+        dht.begin();
 }
 
 void loop()
