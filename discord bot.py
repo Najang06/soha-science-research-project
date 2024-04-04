@@ -23,25 +23,25 @@ async def 초대(ctx):
 
 @client.command()
 async def 핑(ctx):
-    레이턴시 = round(client.latency * 1000)
-    핑 = f'{str(레이턴시)}ms'
+    Latency = round(client.latency * 1000)
+    Ping = f'{str(Latency)}ms'
 
-    if 레이턴시 <= 200:
-        상태 = '매우 좋음'
-        상태_색상 = 0x0100ff
-        상태_이모티콘 = '@(^v^)@'
-    elif 200 < 레이턴시 <= 400:
-        상태 = '좋음'
-        상태_색상 = 0x1ddb16
-        상태_이모티콘 = '(^o^)'
-    elif 400 < 레이턴시 <= 600:
-        상태 = '나쁨'
-        상태_색상 = 0xffe400
-        상태_이모티콘 = '(-_-);;'
+    if Latency <= 200:
+        status = '매우 좋음'
+        status_color = 0x0100ff
+        status_emogi = '@(^v^)@'
+    elif 200 < Latency <= 400:
+        status = '좋음'
+        status_color = 0x1ddb16
+        status_emogi = '(^o^)'
+    elif 400 < Latency <= 600:
+        status = '나쁨'
+        status_color = 0xffe400
+        status_emogi = '(-_-);;'
     else:
-        상태 = '매우 나쁨'
-        상태_색상 = 0xff0000
-        상태_이모티콘 = '(╯°□°）╯︵ ┻━┻'
+        status = '매우 나쁨'
+        status_color = 0xff0000
+        status_emogi = '(╯°□°）╯︵ ┻━┻'
 
     cpu = psutil.cpu_freq()
     cpu_current_ghz = round(cpu.current / 1000, 2)
@@ -52,16 +52,16 @@ async def 핑(ctx):
     memory_total = round(memory.total / 1024**3)
     memory_avail = round(memory.available/1024**3, 1)
 
-    임베드 = discord.Embed(title='봇 지연 시간(핑)', color=상태_색상)
-    임베드.add_field(name="핑(레이턴시)", value=핑, inline=False)
-    임베드.add_field(name='봇 상태', value=상태, inline=False)
-    임베드.add_field(name='CPU 속도', value=str(cpu_current_ghz) + "GHz", inline=True)
-    임베드.add_field(name='CPU 사용량', value=str(cpu_p) + "%", inline=True)
-    임베드.add_field(name='CPU 코어 개수', value=str(cpu_core) + "개", inline=True)
-    임베드.add_field(name='총 메모리 용량', value=str(memory_total) + "GB", inline=True)
-    임베드.add_field(name='사용 가능한 메모리 용량', value=str(memory_avail) + "GB", inline=True)
-    임베드.set_footer(text=상태_이모티콘)
-    await ctx.send(embed=임베드)
+    embed = discord.Embed(title='봇 지연 시간(핑)', color=status_color)
+    embed.add_field(name="핑(레이턴시)", value=Ping, inline=False)
+    embed.add_field(name='봇 상태', value=status, inline=False)
+    embed.add_field(name='CPU 속도', value=str(cpu_current_ghz) + "GHz", inline=True)
+    embed.add_field(name='CPU 사용량', value=str(cpu_p) + "%", inline=True)
+    embed.add_field(name='CPU 코어 개수', value=str(cpu_core) + "개", inline=True)
+    embed.add_field(name='총 메모리 용량', value=str(memory_total) + "GB", inline=True)
+    embed.add_field(name='사용 가능한 메모리 용량', value=str(memory_avail) + "GB", inline=True)
+    embed.set_footer(text=status_emogi)
+    await ctx.send(embed=embed)
 
 @client.command()
 async def 날씨등록(ctx, 날씨: str):
