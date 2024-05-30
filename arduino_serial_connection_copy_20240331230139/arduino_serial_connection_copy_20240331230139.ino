@@ -14,7 +14,7 @@ DHT dht(DHT22_PIN, DHTTYPE);
 
 #define SEALEVELPRESSURE_HPA (1013.25) // 해수면 기압 (현재 위치의 기압에 대한 보정값으로 사용됨)
 
-Adafruit_BME280 bme; // BME280 객체 생성
+//Adafruit_BME280 bme; // BME280 객체 생성
 
 // DHT22 센서로부터 데이터를 읽어 오도록 함수를 호출
 // int chk = dht.read(DHT22_PIN);
@@ -25,7 +25,7 @@ int temp = 0; // 기온 변수 정의
 int humid = 0; // 습도 변수 정의
 int dust = 0; // 미세먼지 변수 정의
 int gnd_humid = 0; // 토양 수분 변수 정의
-float pres = 0; // 대기압 변수 정의
+// float pres = 0; // 대기압 변수 정의
 int bright = 0; // 밝기 변수 정의
 
 unsigned long duration;   //지속 시간
@@ -42,7 +42,7 @@ char serial_receive; // 시리얼 통신으로 받는 변수 정의
 char serial_send; // 시리얼 통신으로 보낼 데이터 변수 정의
 
 // 시리얼 신호로 어떤 신호를 보낼 것인가
-// {‘1’ : ‘온도‘, ’2‘ : ’습도‘, ’3‘ : ’미세먼지‘, ’4‘ : ’토양 수분‘, ’5‘ : ’대기압‘, ‘6’ : ‘광량’}
+// {‘1’ : ‘온도‘, ’2‘ : ’습도‘, ’3‘ : ’미세먼지‘, ’4‘ : ’토양 수분‘, ‘5’ : ‘광량’}
 void setup()
 {
 	Serial.begin(9600);
@@ -96,14 +96,7 @@ void loop()
 		Serial.println(serial_send);
 	}
 
-	if(serial_receive == '5') // 대기압
-	{
-		float pres = bme.readPressure() / 100.0F;
-		float serial_send = pres;
-		Serial.println(serial_send);
-	}
-
-	if(serial_receive == '6')
+	if(serial_receive == '5') // 밝이
 	{
 		int bright = analogRead(A0);
 		int serial_send = bright;
