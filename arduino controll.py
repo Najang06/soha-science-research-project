@@ -32,7 +32,7 @@ df = pd.DataFrame({'time' : [0],
 		   		'gnd_humid' : [0],
 		   		'bright' : [0]})
 
-if (time_now == "03:00") or (time_now == "06:00") or (time_now == "09:00") or (time_now == "12:00" or (time_now == "15:00") or (time_now == "18:00") or (time_now == "21:00"): # 시간대별로 센서 데이터 수집 후 딕셔너리에 저장
+if (time_now == "03:00") or (time_now == "06:00") or (time_now == "09:00") or (time_now == "12:00") or (time_now == "15:00") or (time_now == "18:00") or (time_now == "21:00"): # 시간대별로 센서 데이터 수집 후 딕셔너리에 저장
 	data_list = [] # 받은 데이터를 저장할 리스트
 	data_list.append(date_now + '/' + time_now) # 시간 내놔
 	for catgry in category:
